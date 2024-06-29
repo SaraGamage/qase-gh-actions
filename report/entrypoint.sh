@@ -17,6 +17,14 @@ if [ "$VERBOSE" == "true" ]; then
     DEBUG="--verbose"
 fi
 
+## trying to resolve error:
+#level=ERROR msg="failed to parse results" op=result.parser.import error="stat <<PATH>>: no such file or directory"
+echo "can't find xml file.."
+echo $RESULT_PATH
+echo "-------"
+ls -R
+echo "^^^^^^^^^^^^^^"
+
 # Upload test results to Qase TMS
 qli testops result upload -t "$TOKEN" -p "$PROJECT" --id "$ID" --format "$FORMAT" \
   --path "$RESULT_PATH" --batch "$BATCH" --steps "$STEPS" $DEBUG
